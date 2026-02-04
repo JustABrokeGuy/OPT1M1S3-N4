@@ -9,8 +9,11 @@ This is a kernel that I compiled for the Samsung Galaxy Note 4 (N910C) variant. 
 There are 5 vareints (for now*) to choose from, from no undervolt to undervolt.
 
 // Your warrenty is now void.
+
 // I am not responsible for anything that may happen such bricked devices, dead SD Cards and etc.
+
 // Please do some research first and whatnot.
+
 // YOU are choosing to make these modifications to your phone.
 
 Anyways, lets get to the installation :D
