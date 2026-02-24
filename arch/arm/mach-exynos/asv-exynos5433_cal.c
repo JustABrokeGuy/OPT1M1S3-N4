@@ -343,14 +343,14 @@ u32 cal_get_volt(u32 id, s32 level)
 	if (lock_volt > volt)
 		volt = lock_volt;
 
-    // Small cores undervolt 5mV
+    // Small cores undervolt 15mV
     //if (id == SYSC_DVFS_KFC) {
 
       //  volt -= 5000;
 
     //}
 
-    // Big cores undervolt 15mV
+    // Big cores undervolt 25mV
     //if (id == SYSC_DVFS_EGL) {
 
       //  volt -= 15000;
@@ -403,7 +403,7 @@ u32 cal_get_freq(u32 id, s32 level)
 				(id == SYSC_DVFS_INT) ? volt_table_int_v2[idx][0] :
 				(id == SYSC_DVFS_CAM) ? volt_table_cam_v2[idx][0] :
 				0);
-	} else if (cal_get_table_ver() <= 8) { /* table ver 6, 7, 8 */
+	} else if (cal_get_table_ver() <= 8) { /* table ver 6, 7, 8 */  // Might need to add for 730MHz by changing 8 to 9?
 		freq = ((id == SYSC_DVFS_EGL) ? volt_table_egl_v3[idx][0] :
 				(id == SYSC_DVFS_KFC) ? volt_table_kfc_v3[idx][0] :
 				(id == SYSC_DVFS_G3D) ? volt_table_g3d_v3[idx][0] :

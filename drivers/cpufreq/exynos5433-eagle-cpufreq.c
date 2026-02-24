@@ -407,7 +407,7 @@ static void __init set_volt_table_CA15(void)
 #if defined(CONFIG_SOC_EXYNOS5433_L)
 		max_support_idx_CA15 = L7;	/* 1.8 GHz */
 #else
-		max_support_idx_CA15 = L6;	/* 1.9 GHz */
+		max_support_idx_CA15 = L4;	/* 2.1 GHz */
 #endif
 	}
 
@@ -510,11 +510,11 @@ int __init exynos5_cpufreq_CA15_init(struct exynos_dvfs_info *info)
 	info->min_support_idx = min_support_idx_CA15;
 
 #ifdef CONFIG_SEC_PM
-	set_boot_cpu_qos_freq(info, L10);
+	set_boot_cpu_qos_freq(info, L6);
 #else
-	/* booting frequency is 1.5GHz */
-	info->boot_cpu_min_qos = exynos5433_freq_table_CA15[L10].frequency;
-	info->boot_cpu_max_qos = exynos5433_freq_table_CA15[L10].frequency;
+	/* booting frequency is 1.7GHz */
+	info->boot_cpu_min_qos = exynos5433_freq_table_CA15[L6].frequency;
+	info->boot_cpu_max_qos = exynos5433_freq_table_CA15[L6].frequency;
 #endif
 	/* reboot limit frequency is 800MHz */
 	info->reboot_limit_freq = exynos5433_freq_table_CA15[L17].frequency;

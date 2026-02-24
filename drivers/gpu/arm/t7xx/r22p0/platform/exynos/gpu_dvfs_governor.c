@@ -106,11 +106,26 @@ static int gpu_dvfs_governor_default(struct exynos_context *platform, int utiliz
 	} else {
 		platform->down_requirement = platform->table[platform->step].down_staycount;
 	}
+
+    // Set the max GPU clock to 730MHz if GPU usage is 80% and above
+    // Set the max GPU clock to 700MHz if GPU usage is 70% and above
+    if (utilization >= 80) {
+
+        platform->step = 0;    
+
+    }   else if (utilization >= 70) {
+
+        platform->step = 1;
+
+    }
+
 	DVFS_ASSERT((platform->step >= gpu_dvfs_get_level(platform->gpu_max_clock))
 					&& (platform->step <= gpu_dvfs_get_level(platform->gpu_min_clock)));
 
 	return 0;
 }
+
+// Interactive
 
 static int gpu_dvfs_governor_interactive(struct exynos_context *platform, int utilization)
 {
@@ -152,11 +167,26 @@ static int gpu_dvfs_governor_interactive(struct exynos_context *platform, int ut
 		platform->down_requirement = platform->table[platform->step].down_staycount;
 	}
 
+    // Set the max GPU clock to 730MHz if GPU usage is 80% and above
+    // Set the max GPU clock to 700MHz if GPU usage is 70% and above
+    if (utilization >= 80) {
+
+        platform->step = 0;    
+
+    }   else if (utilization >= 70) {
+
+        platform->step = 1;
+
+    }
+
+
 	DVFS_ASSERT((platform->step >= gpu_dvfs_get_level(platform->gpu_max_clock))
 					&& (platform->step <= gpu_dvfs_get_level(platform->gpu_min_clock)));
 
 	return 0;
 }
+
+// End Interactive
 
 #define G3D_GOVERNOR_STATIC_PERIOD		10
 static int gpu_dvfs_governor_static(struct exynos_context *platform, int utilization)
@@ -221,6 +251,18 @@ static int gpu_dvfs_governor_booster(struct exynos_context *platform, int utiliz
 	} else {
 		platform->down_requirement = platform->table[platform->step].down_staycount;
 	}
+
+    // Set the max GPU clock to 730MHz if GPU usage is 80% and above
+    // Set the max GPU clock to 700MHz if GPU usage is 70% and above
+    if (utilization >= 80) {
+
+        platform->step = 0;    
+
+    }   else if (utilization >= 70) {
+
+        platform->step = 1;
+
+    }
 
 	DVFS_ASSERT((platform->step >= gpu_dvfs_get_level(platform->gpu_max_clock))
 					&& (platform->step <= gpu_dvfs_get_level(platform->gpu_min_clock)));
