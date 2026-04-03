@@ -23,14 +23,6 @@
 #include <linux/init.h>
 #include <linux/nmi.h>
 #include "sched/sched.h"
-#ifdef CONFIG_SEC_DEBUG_SUBSYS
-#include <linux/sec_debug.h>
-#endif
-
-#ifdef CONFIG_EXYNOS_CORESIGHT_PC_INFO
-#include <mach/coresight.h>
-#endif
-#include <mach/exynos-ss.h>
 
 #define PANIC_TIMER_STEP 100
 #define PANIC_BLINK_SPD 18
@@ -128,20 +120,6 @@ void panic(const char *fmt, ...)
 	if (!test_taint(TAINT_DIE) && oops_in_progress <= 1)
 		dump_stack();
 #endif
-#ifdef CONFIG_SEC_DEBUG_SUBSYS
-	sec_debug_save_panic_info(buf,
-		(unsigned int)__builtin_return_address(0));
-#endif
-
-#if defined(CONFIG_SOC_EXYNOS5422) || defined(CONFIG_SOC_EXYNOS5430)
-	show_exynos_pmu();
-#endif
-#if defined(CONFIG_SOC_EXYNOS5422) || defined(CONFIG_SOC_EXYNOS5430)
-	show_exynos_cmu();
-#endif
-
-	exynos_ss_early_dump();
-	sysrq_sched_debug_show();
 
 	/*
 	 * If we have crashed and we have a crash kernel loaded let it handle
@@ -159,9 +137,6 @@ void panic(const char *fmt, ...)
 
 	kmsg_dump(KMSG_DUMP_PANIC);
 
-#ifdef CONFIG_EXYNOS_CORESIGHT_PC_INFO
-	exynos_cs_show_pcval();
-#endif
 	atomic_notifier_call_chain(&panic_notifier_list, 0, buf);
 
 	bust_spinlocks(0);

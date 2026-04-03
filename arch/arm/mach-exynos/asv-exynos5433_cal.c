@@ -346,14 +346,14 @@ u32 cal_get_volt(u32 id, s32 level)
     // Small cores undervolt 15mV
     //if (id == SYSC_DVFS_KFC) {
 
-      //  volt -= 5000;
+        //volt -= 5000;
 
     //}
 
     // Big cores undervolt 25mV
     //if (id == SYSC_DVFS_EGL) {
 
-      //  volt -= 15000;
+        //volt -= 15000;
     
     //}
 

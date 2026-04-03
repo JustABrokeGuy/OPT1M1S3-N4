@@ -291,6 +291,19 @@ int mmc_init_queue(struct mmc_queue *mq, struct mmc_card *card,
 	if (!mq->queue)
 		return -ENOMEM;
 
+    // Sets 32 nr_requests and 512kb readahead for the internal eMMC storage and keeps the default 128 nr_requests for external storage.
+    if (mmc_card_mmc(card)) {
+    
+        mq->queue->nr_requests = 32;
+        mq->queue->backing_dev_info.ra_pages = 128;
+
+    }   else {
+
+        mq->queue->nr_requests = 128;
+
+    }
+
+
 	if (card->ext_csd.cmdq_support) {
 		for (i = 0; i < card->ext_csd.cmdq_depth; i++)
 			atomic_set(&mq->mqrq[i].index, 0);

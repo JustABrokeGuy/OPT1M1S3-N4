@@ -122,15 +122,15 @@ static const unsigned int asv_voltage_5433_CA7[CPUFREQ_LEVEL_END_CA7] = {
 
 /* Minimum memory throughput in megabytes per second */
 static int exynos5433_bus_table_CA7[CPUFREQ_LEVEL_END_CA7] = {
-	667000,		/* 2.0 GHz */
-	667000,		/* 1.9 GHz */
-	667000,		/* 1.8 GHz */
-	667000,		/* 1.7 GHz */
-	667000,		/* 1.6 GHz */
-	667000,		/* 1.5 GHz */
-	667000,		/* 1.4 GHz */
-	667000,		/* 1.3 GHz */
-	667000,		/* 1.2 GHz */
+	825000,		/* 2.0 GHz */
+	825000,		/* 1.9 GHz */
+	825000,		/* 1.8 GHz */
+	825000,		/* 1.7 GHz */
+	825000,		/* 1.6 GHz */
+	825000,		/* 1.5 GHz */
+	825000,		/* 1.4 GHz */
+	825000,		/* 1.3 GHz */
+	825000,		/* 1.2 GHz */
 	667000,		/* 1.1 GHz */
 	543000,		/* 1.0 GHz */
 	413000,		/* 900 MHz */
