@@ -598,9 +598,6 @@ else
 KBUILD_CFLAGS	+= -O2
 endif
 
-# Added for better overall performance.
-KBUILD_CFLAGS   += -ftree-vectorize -fno-strict-aliasing
-
 include $(srctree)/arch/$(SRCARCH)/Makefile
 
 ifdef CONFIG_READABLE_ASM

@@ -344,18 +344,18 @@ u32 cal_get_volt(u32 id, s32 level)
 		volt = lock_volt;
 
     // Small cores undervolt 15mV
-    //if (id == SYSC_DVFS_KFC) {
+    if (id == SYSC_DVFS_KFC) {
 
-        //volt -= 5000;
+        volt -= 15000;
 
-    //}
+    }
 
     // Big cores undervolt 25mV
-    //if (id == SYSC_DVFS_EGL) {
+    if (id == SYSC_DVFS_EGL) {
 
-        //volt -= 15000;
+        volt -= 25000;
     
-    //}
+    }
 
 #if defined(CONFIG_EXYNOS5433_ASV_NEON_WORKAROUND)
 	// Atlas 900 / 800 / 700 Mhz + 25mv		
